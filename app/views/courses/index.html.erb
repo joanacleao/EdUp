@@ -1,0 +1,18 @@
+
+<% @courses.each do |course| %>
+<div>
+  <h1><%= course.name %></h1>
+  <p><%= course.description %></p>
+  <div style="display: flex; flex-direction: row;">
+    <% @videos.all_by_course(course.id).each do |video| %>
+    <div style="margin:2%"><%= youtube_video "http://www.youtube.com/embed/eCfDxZxTBW4"%></div>
+    <% end %>
+  </div>
+  <div style="display: flex; flex-direction: row;">
+    <p style="margin-right: 1%"; margin-left: 1%"><link rel="stylesheet" href="">Invite</p>
+    <p style="margin-right: 1%"><link rel="stylesheet" href="">Edit</p>
+    <p style="margin-right: 1%"><link rel="stylesheet" href="">Delete</p>
+  </div>
+</div>
+<% end %>
+

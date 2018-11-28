@@ -1,0 +1,11 @@
+<div class='nested-fields'>
+    <%= f.input :name, label: "Name"  %>
+    <%= f.label :url %>
+    <%= f.url_field :url %><br />
+    <%= f.label :path, label: "File" %>
+    <%= f.file_field :path %></%>
+    <%= link_to_remove_association "remove video", f %>
+</div>
+
+
+
