@@ -1,25 +1,2 @@
-<div class="col-xs-12">
-  <%= simple_form_for @course do |f| %>
-    <div class="">
-      <div class= "">
-        <div class="col-md-6">
-          <%= f.input :name, label: "Course name" %>
-          <%= f.input :description %>
-          <h3>Videos</h3>
-          <div id='videos'>
-            <%= f.simple_fields_for :videos do |video| %>
-              <%= render 'shared/video_fields', :f => video %>
-            <% end %>
-            <div class='links'>
-              <%= link_to_add_association 'add video', f, :videos, :partial => 'shared/video_fields'%>
-            </div>
-          </div>
-          <div class= "form-actions">
-            <%= f.button :submit , class: "btn-form" %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render 'form_courses' %>
 

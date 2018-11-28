@@ -23,20 +23,28 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    @course = Course.find(params[:id])
+
   end
 
   def update
+    @course = Course.find(params[:id])
+    @course.update(course_params)
+    redirect_to courses_path
+
   end
 
   def destroy
+
+    @course = Course.find(params[:id])
+    @course.destroy
+    redirect_to courses_path
   end
 
   private
 
   def course_params
-    params.require(:course).permit(:name, :description, videos_attributes: [:name, :url, :path])
-
-    #params.require(:survey).permit(:title, sections_attributes: [:title, questions_attributes:[:title]])
+    params.require(:course).permit(:id, :name, :description, videos_attributes: [:id, :name, :url, :path, :_destroy])
   end
 
 end
