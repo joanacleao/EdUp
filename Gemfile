@@ -20,7 +20,7 @@ gem 'faker'
 gem 'enumerize'
 gem "cocoon"
 gem 'jquery-rails'
-gem 'turbolinks'
+#gem 'turbolinks'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div style="display: flex; flex-direction: row;">
-    <p style="margin-right: 1%"; margin-left: 1%"><link rel="stylesheet" href="">Invite</p>
+    <p style="margin-right: 1%"; margin-left: 1%"><%= link_to "Invite", new_course_invitation_path(course) %></p>
     <p style="margin-right: 1%"><%= link_to "Edit", edit_course_path(course) %></p>
     <p style="margin-right: 1%"><%= link_to "Delete", course_path(course),
       method: :delete,
