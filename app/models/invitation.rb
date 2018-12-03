@@ -21,7 +21,7 @@ class Invitation < ApplicationRecord
 
   def check_user_existence
     recipient = User.find_by_email(email)
-   if recipient
+    if recipient
       self.user_id = recipient.id
    end
  end
