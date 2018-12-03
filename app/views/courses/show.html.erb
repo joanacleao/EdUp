@@ -1,3 +1,20 @@
-<p>"show"</p>
+<div>
+  <h1><%=@course.name   %></h1>
+  <p>  <%=@course.description   %></p>
+  <p>Videos:</p>
+  <% i = 1 %>
+  <% @course.videos.each do |video| %>
+  <div style="display: flex; margin-left: 1%; ">
+    <p> <strong><%= i  %>.</strong> <%= video.name %></p>
+    <% i = i + 1 %>
+    <p style="margin-left: 1%"><%= link_to "See", video.url %></p>
+  </div>
+  <% end %>
+</div>
 
-<%=   %>
+ <% @videos.each do |video| %>
+ <%= youtube_video_max(video.url) %>
+ <% end %>
+
+<div ><%= will_paginate @videos %></div>
+

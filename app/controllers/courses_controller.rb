@@ -10,7 +10,8 @@ class CoursesController < ApplicationController
   end
 
   def show
-
+    @course = Course.find(params[:id])
+    @videos = @course.videos.paginate(:page => params[:page], :per_page => 1)
     @token = params[:invitation_token]
     if @token != nil
       invitation = Invitation.find_by_token(@token)

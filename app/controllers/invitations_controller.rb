@@ -18,14 +18,11 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
     @invitation.course = Course.find_by_id(params[:course_id])
 
-
     #check if this user has already been invited to this course
     user_id = User.find_by_email(invitation_params[:email])
     @previous_invitation = Invitation.all_by_course(params[:course_id]).all_by_user(user_id).last
     if previous_invitation =! nil
       InviteMailer.existing_user_invite(@previous_invitation, course_path(params[:course_id], invitation_token: @previous_invitation.token)).deliver
-
-    byebug
     else
 
     if @invitation.save
