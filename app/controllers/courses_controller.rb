@@ -3,7 +3,9 @@ require "byebug"
 class CoursesController < ApplicationController
 
   def index
+    @test = current_user.role.publisher?
     @courses = current_user.role.publisher? ? Course.all_by_user(current_user.id) : Invitation.all_by_user(current_user.id)
+    #byebug
     @videos = Video.all
   end
 
