@@ -7,7 +7,6 @@ class InviteMailer < ApplicationMailer
   #
   def welcome
     @greeting = "Hi"
-
     mail(to: @invitation.email, subject: 'New Invite')
   end
 
@@ -17,6 +16,10 @@ class InviteMailer < ApplicationMailer
     mail(to: @invitation.email, subject: 'New Invite')
   end
 
-
+  def existing_user_invite(invitation, path)
+    @invitation = invitation
+    @path = path
+    mail(to: @invitation.email, subject: 'New Invite')
+  end
 
 end

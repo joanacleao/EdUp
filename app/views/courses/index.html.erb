@@ -14,7 +14,7 @@
     <p style="margin-right: 1%"><%= link_to "Delete", course_path(course),
       method: :delete,
       data: { confirm: "Are you sure?" } %></p>
-
+    <p style="margin-right: 1%"><%= link_to "Status", course_invitations_path(course) %></p>
   </div>
 </div>
 <% end %>

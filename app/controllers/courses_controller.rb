@@ -7,6 +7,16 @@ class CoursesController < ApplicationController
     @videos = Video.all
   end
 
+  def show
+
+    @token = params[:invitation_token]
+    if @token != nil
+      invitation = Invitation.find_by_token(@token)
+      #invitation.update_column(:user_id, current_user.id )
+      invitation.update_column( :status, :accepted)
+    end
+  end
+
   def new
     @course = Course.new
     @course.videos.build

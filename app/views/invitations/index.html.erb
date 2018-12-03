@@ -1,0 +1,7 @@
+<% @invitations.each do |invite|  %>
+<div>
+  <%= invite.user.email %>
+  <%= invite.created_at.to_date  %>
+  <%= invite.status %>
+</div>
+<% end %>

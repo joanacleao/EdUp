@@ -14,21 +14,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    #super do |resource|
-      #byebug
-      @newUser = build_resource(sign_up_params)
-      @newUser.save
-      @token = params[:user][:invitation_token]
+    @newUser = build_resource(sign_up_params)
+    @newUser.save
+    @token = params[:user][:invitation_token]
 
-      if @token != nil
-        #byebug
-        invite = Invitation.find_by_token(@token)
-        invite.update_column( :user_id, @newUser.id )
-        #byebug
-      else
-
-      end
-    #end
+    if @token != nil
+      invite = Invitation.find_by_token(@token)
+      invite.update_column( :user_id, @newUser.id )
+    else
+      #ver o que tenho q por aqui (create registration sem token)
+    end
   end
 
   # GET /resource/edit
