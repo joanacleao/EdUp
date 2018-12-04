@@ -14,12 +14,14 @@ class CoursePolicy < ApplicationPolicy
     # record - course
     # user - current_user
     record.user == user
-
   end
 
   def create?
     user.role.publisher?
   end
 
+  def destroy?
+    update?
+  end
 
 end

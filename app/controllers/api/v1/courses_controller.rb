@@ -1,6 +1,6 @@
 class Api::V1::CoursesController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
-  before_action :set_course, only: [ :show, :update ]
+  before_action :set_course, only: [ :show, :update, :destroy ]
 
   def index
     @courses = policy_scope(Course)
@@ -26,17 +26,19 @@ class Api::V1::CoursesController < Api::V1::BaseController
     else
       render_error
     end
+  end
 
-
+  def destroy
+    @course.destroy
+    head :no_content
   end
 
 
-private
+  private
 
   def set_course
     @course = Course.find(params[:id])
     authorize @course
-
   end
 
 

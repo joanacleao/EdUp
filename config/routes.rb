@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :courses, only: [ :index, :show, :update, :create] do
+      resources :courses, only: [ :index, :show, :update, :create, :destroy] do
         resources :videos, only: [:index, :show]
       end
     end
