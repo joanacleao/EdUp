@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 
   def index
     @test = current_user.role.publisher?
-    @courses = current_user.role.publisher? ? Course.all_by_user(current_user.id) : Invitation.all_by_user(current_user.id)
+    @courses = current_user.role.publisher? ? Course.all_by_user(current_user.id).order('created_at DESC') : Invitation.all_by_user(current_user.id).order('created_at DESC')
     #byebug
     @videos = Video.all
   end

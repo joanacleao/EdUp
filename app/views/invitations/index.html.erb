@@ -1,7 +1,8 @@
 <% @invitations.each do |invite|  %>
 <div>
-  <%= invite.user.email %>
   <%= invite.created_at.to_date  %>
+  <%= invite.user.email %>
   <%= invite.status %>
+  <p style="margin-left: 1%"><%= link_to "Resend", video.url %></p>
 </div>
 <% end %>

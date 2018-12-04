@@ -11,12 +11,12 @@ class Invitation < ApplicationRecord
   enumerize :status, in: [:accepted, :pending], default: :pending
 
   def generate_token
-    token = Invitation.all_by_course(self.course_id).all_by_user(self.user_id).last.token
-    if token != nil
-      self.token = token
-    else
+    #token = Invitation.all_by_course(self.course_id).all_by_user(self.user_id).last.token
+    #if token != nil
+      #self.token = token
+    #else
       self.token = Digest::SHA1.hexdigest([self.course_id, Time.now, rand].join)
-    end
+    #end
   end
 
   def check_user_existence
