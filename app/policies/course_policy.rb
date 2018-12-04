@@ -17,6 +17,9 @@ class CoursePolicy < ApplicationPolicy
 
   end
 
+  def create?
+    user.role.publisher?
+  end
 
 
 end

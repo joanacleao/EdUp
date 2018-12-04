@@ -17,6 +17,20 @@ class Api::V1::CoursesController < Api::V1::BaseController
     end
   end
 
+  def create
+    @course = Course.new(course_params)
+    @course.user = current_user
+    authorize @course
+    if @course.save
+      render :show
+    else
+      render_error
+    end
+
+
+  end
+
+
 private
 
   def set_course
