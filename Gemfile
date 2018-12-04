@@ -23,6 +23,7 @@ gem 'jquery-rails'
 #gem 'turbolinks'
 gem 'will_paginate', '~> 3.1.1'
 gem 'will_paginate-bootstrap'
+gem 'pundit'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

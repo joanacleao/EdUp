@@ -24,6 +24,12 @@ Rails.application.routes.draw do
     get '/invitations/:id' , to: 'invitations#resend', as: :resend_invitation
   end
 
-
+    namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :courses, only: [ :index, :show] do
+        resources :videos, only: [:index, :show]
+      end
+    end
+  end
 
 end
