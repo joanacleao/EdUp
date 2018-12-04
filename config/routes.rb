@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :courses do
     resources :videos, only: [:index, :new, :create, :destroy, :show]
-    resources :invitations, only: [:index, :new, :create, :destroy, :show]
+    resources :invitations, only: [:index, :new, :create, :destroy]
+    get '/invitations/:id' , to: 'invitations#resend', as: :resend_invitation
   end
+
 
 
 end

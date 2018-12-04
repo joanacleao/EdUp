@@ -3,6 +3,8 @@
   <%= invite.created_at.to_date  %>
   <%= invite.user.email %>
   <%= invite.status %>
-  <p style="margin-left: 1%"><%= link_to "Resend", video.url %></p>
+  <p style="margin-left: 1%"><%= link_to "Resend", course_resend_invitation_path(params[:course_id], invite)%></p>
 </div>
 <% end %>
+
+

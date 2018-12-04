@@ -5,8 +5,6 @@ class InvitationsController < ApplicationController
 
   end
 
-
-
   def show
 
   end
@@ -18,11 +16,9 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(invitation_params)
     @invitation.course = Course.find_by_id(params[:course_id])
-
     #check if this user has already been invited to this course
     user_id = User.find_by_email(invitation_params[:email])
     @previous_invitation = Invitation.all_by_course(params[:course_id]).all_by_user(user_id).last
-    #byebug
     if @previous_invitation != nil
       InviteMailer.existing_user_invite(@previous_invitation, course_path(params[:course_id], invitation_token: @previous_invitation.token)).deliver
     else
@@ -43,10 +39,16 @@ class InvitationsController < ApplicationController
         # oh no, creating an new invitation failed
       end
     end
-
   end
 
   def destroy
+  end
+
+  def resend
+    @invitation = Invitation.find(params[:id])
+    InviteMailer.existing_user_invite(@invitation, course_path(params[:course_id], invitation_token: @invitation.token)).deliver
+    redirect_to course_invitations_path
+
   end
 
   private
