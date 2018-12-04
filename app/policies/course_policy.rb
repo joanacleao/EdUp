@@ -9,5 +9,14 @@ class CoursePolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    #only course owners can update it
+    # record - course
+    # user - current_user
+    record.user == user
+
+  end
+
+
 
 end

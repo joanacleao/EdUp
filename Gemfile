@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.1'
 gem 'will_paginate-bootstrap'
 gem 'pundit'
+gem "simple_token_authentication"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
